@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ja i moja Juleczka!!</title>
+    <style>
+        html, body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #c46cb9;
+            color: #ffccd5;
+            padding: 10px;
+            margin: 0;
+            overflow-x: hidden;
+            width: 100vw;
+        }
+
+        h1 {
+            font-size: 2em;
+            margin-bottom: 15px;
+        }
+
+        p {
+            font-size: 1em;
+            margin: 10px auto;
+            max-width: 90%;
+        }
+
+        .media-container {
+            margin-top: 15px;
+        }
+
+        video, img {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .description {
+            font-size: 1em;
+            margin-top: 10px;
+            color: #ffccd5;
+        }
+
+        .controls {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .button {
+            font-size: 1em;
+            padding: 8px 16px;
+            cursor: pointer;
+            background-color: #ffccd5;
+            color: #d63384;
+            border: none;
+            border-radius: 8px;
+        }
+
+        .button:hover {
+            background-color: #a61e63;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        #messageButton {
+            font-size: 1.5em;
+            padding: 15px;
+            margin: 15px auto;
+            cursor: pointer;
+            background-color: #ffccd5;
+            color: #d63384;
+            border: none;
+            border-radius: 15px;
+            display: none;
+        }
+
+        .song-selection {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
+            margin-top: 30px;
+            justify-items: center;
+        }
+
+        .song-item {
+            text-align: center;
+        }
+
+        .song-cover {
+            cursor: pointer;
+            width: 100px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .song-title {
+            color: #ffccd5;
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.5em;
+            }
+
+            p {
+                font-size: 0.9em;
+            }
+
+            .button {
+                font-size: 0.9em;
+                padding: 6px 12px;
+            }
+
+            #messageButton {
+                font-size: 1.2em;
+                padding: 10px;
+            }
+
+            video, img {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .song-cover {
+                width: 80px;
+            }
+
+            .song-selection {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Ja i moja Juleczka!! ❤️</h1>
+    <p>Nie żebyś myślała, że mam jakieś niesamowite zdolności programistyczne, bo nie mam, ale to jak zrobiłem tę stronę nieznając absolutnie podstaw programowania, pozostaje moją słodką tajemnicą hihi, kocham cię dupciu!!</p>
+    
+    <div class="media-container">
+        <div id="media">
+            <img src="image1.jpg" alt="Nasze wspomnienie">
+        </div>
+        <p id="description" class="description">Nasze pierwsze zdjęcie razem! 🥰</p>
+        <button id="messageButton" class="button" onclick="toggleMessage()">💌 Wiadomość</button>
+    </div>
+    
+    <div class="controls">
+        <button class="button" onclick="prevMedia()">⬅️ Poprzedni</button>
+        <button class="button" onclick="nextMedia()">➡️ Następny</button>
+    </div>
+    
+    <p id="message" class="description hidden">TUTAJ BEDZIE WIADOMOSC</p>
+
+    <!-- Wybór piosenek -->
+    <div class="song-selection">
+        <div class="song-item" onclick="playSong('audio1.mp3')">
+            <img src="okladka1.jpg" alt="Piosenka 1" class="song-cover">
+            <p class="song-title">Półsny</p>
+        </div>
+        <div class="song-item" onclick="playSong('audio2.mp3')">
+            <img src="okladka2.jpg" alt="Piosenka 2" class="song-cover">
+            <p class="song-title">PRZYTOBIE</p>
+        </div>
+        <div class="song-item" onclick="playSong('audio3.mp3')">
+            <img src="okladka3.jpg" alt="Piosenka 3" class="song-cover">
+            <p class="song-title">Futurismo</p>
+        </div>
+        <div class="song-item" onclick="playSong('audio4.mp3')">
+            <img src="okladka4.jpg" alt="Piosenka 4" class="song-cover">
+            <p class="song-title">Luv tu da max</p>
+        </div>
+        <div class="song-item" onclick="playSong('audio5.mp3')">
+            <img src="okladka5.jpg" alt="Piosenka 5" class="song-cover">
+            <p class="song-title">H4R1BO</p>
+        </div>
+        <div class="song-item" onclick="playSong('audio6.mp3')">
+            <img src="okladka6.jpg" alt="Piosenka 6" class="song-cover">
+            <p class="song-title">Heartbeat</p>
+        </div>
+        <div class="song-item" onclick="playSong('audio7.mp3')">
+            <img src="okladka7.jpg" alt="Piosenka 7" class="song-cover">
+            <p class="song-title">Stay</p>
+        </div>
+        <div class="song-item" onclick="playSong('audio8.mp3')">
+            <img src="okladka8.jpg" alt="Piosenka 8" class="song-cover">
+            <p class="song-title">Zawsze</p>
+        </div>
+        <div class="song-item" onclick="playSong('audio9.mp3')">
+            <img src="okladka9.jpg" alt="Piosenka 9" class="song-cover">
+            <p class="song-title">Young and Beautiful</p>
+        </div>
+        <div class="song-item" onclick="playSong('audio10.mp3')">
+            <img src="okladka10.jpg" alt="Piosenka 10" class="song-cover">
+            <p class="song-title">Salvatore</p>
+        </div>
+    </div>
+
+    <!-- Przyciski do kontroli piosenki -->
+    <div class="controls">
+        <button class="button" onclick="stopSong()">⏹️ Stop</button>
+        <button class="button" onclick="resumeSong()">▶️ Wznow</button>
+    </div>
+
+    <script>
+        let media = [
+            { type: "image", src: "image1.jpg", desc: "Nasze pierwsze zdjęcie razem! 🥰" },
+    { type: "image", src: "image2.jpg", desc: "Spacer po parku! 🍂" },
+    { type: "image", src: "image3.jpg", desc: "Wspólny wyjazd! 🌍" },
+    { type: "image", src: "image4.jpg", desc: "Nasza rocznica! 🎉" },
+    { type: "image", src: "image5.jpg", desc: "Ulubiona kawa razem! ☕" },
+    { type: "image", src: "image6.jpg", desc: "Randka w restauracji! 🍽️" },
+    { type: "image", src: "image7.jpg", desc: "Przytulasy na kanapie! 🛋️" },
+    { type: "image", src: "image8.jpg", desc: "Zachód słońca nad morzem! 🌅" },
+    { type: "image", src: "image9.jpg", desc: "Nasze śmieszne selfie! 😂" },
+    { type: "image", src: "image10.jpg", desc: "Góry zimą! 🏔️" },
+    { type: "image", src: "image11.jpg", desc: "Wspólne gotowanie! 🍳" },
+    { type: "image", src: "image12.jpg", desc: "Kocham Cię najbardziej! ❤️" },
+    { type: "image", src: "image13.jpg", desc: "Nasza przygoda na plaży! 🏖️" },
+    { type: "video", src: "video1.mp4", desc: "Film z naszej podróży! ✈️" },
+    { type: "image", src: "image14.jpg", desc: "Piknik w parku! 🧺" },
+    { type: "image", src: "image15.jpg", desc: "Wspólne zwiedzanie! 🏰" },
+    { type: "image", src: "image16.jpg", desc: "Zimowa zabawa na śniegu! ⛄" },
+    { type: "image", src: "image17.jpg", desc: "Sesja zdjęciowa! 📸" },
+    { type: "video", src: "video2.mp4", desc: "Wspinaczka w górach! 🧗‍♂️" },
+    { type: "image", src: "image18.jpg", desc: "Filmowy wieczór! 🍿" },
+    { type: "image", src: "image19.jpg", desc: "Radosne chwile! 😊" },
+    { type: "image", src: "image20.jpg", desc: "Kawa w ulubionej kawiarni! ☕" },
+    { type: "image", src: "image21.jpg", desc: "Zachód słońca w górach! 🏞️" },
+    { type: "video", src: "video3.mp4", desc: "Nocne życie w mieście! 🌃" },
+    { type: "image", src: "image22.jpg", desc: "Zawsze razem! 💕" },
+    { type: "image", src: "image23.jpg", desc: "Nasze wspólne hobby! 🎨" },
+    { type: "image", src: "image24.jpg", desc: "Wakacje! 🏖️" },
+    { type: "image", src: "image25.jpg", desc: "Wspólna kolacja! 🍝" },
+    { type: "video", src: "video4.mp4", desc: "Tajemniczy las! 🌲" },
+    { type: "image", src: "image26.jpg", desc: "Wspólne spacery! 🚶" },
+    { type: "image", src: "image27.jpg", desc: "Wspólne podróże! ✈️" },
+    { type: "image", src: "image28.jpg", desc: "Relaks w ogrodzie! 🌻" },
+    { type: "image", src: "image29.jpg", desc: "Spacer po lesie! 🌳" },
+    { type: "image", src: "image30.jpg", desc: "Na szczycie góry! 🏔️" },
+    { type: "image", src: "image31.jpg", desc: "Nasza przygoda w parku! 🌳" },
+    { type: "video", src: "video5.mp4", desc: "Nasza wspólna podróż! 🗺️" },
+    { type: "image", src: "image32.jpg", desc: "Wspólny film na wieczór! 🎬" },
+    { type: "image", src: "image33.jpg", desc: "Miłe chwile w deszczu! 🌧️" },
+    { type: "image", src: "image34.jpg", desc: "Ulubiona kawa z rana! ☕" },
+    { type: "image", src: "image35.jpg", desc: "Wspólne ognisko! 🔥" },
+    { type: "image", src: "image36.jpg", desc: "Piękna plaża! 🌊" },
+    { type: "image", src: "image37.jpg", desc: "Wspólne gotowanie! 🍲" },
+    { type: "video", src: "video6.mp4", desc: "Zimowe szaleństwo! ❄️" },
+    { type: "image", src: "image38.jpg", desc: "Chwile na łonie natury! 🌿" },
+    { type: "image", src: "image39.jpg", desc: "Zimowy spacer! ❄️" },
+    { type: "image", src: "image40.jpg", desc: "Radosne chwile z psem! 🐶" },
+    { type: "image", src: "image41.jpg", desc: "Cudowny dzień w ogrodzie! 🌼" },
+    { type: "image", src: "image42.jpg", desc: "Wspólne zakupy! 🛍️" },
+    { type: "image", src: "image43.jpg", desc: "Na spacerze w parku! 🌳" },
+    { type: "video", src: "video7.mp4", desc: "Spacery po plaży! 🌊" },
+    { type: "image", src: "image44.jpg", desc: "Piękne wspomnienie! 📷" },
+    { type: "image", src: "image45.jpg", desc: "Nasze śmieszne chwile! 😂" },
+    { type: "image", src: "image46.jpg", desc: "Wieczór pełen śmiechu! 😄" },
+    { type: "image", src: "image47.jpg", desc: "Spacer po mieście! 🏙️" },
+    { type: "image", src: "image48.jpg", desc: "Szczęśliwi razem! ❤️" },
+    { type: "image", src: "image49.jpg", desc: "Wspólny czas w górach! 🏞️" },
+    { type: "image", src: "image50.jpg", desc: "Wspólne chwile! 🥰" },
+    { type: "image", src: "image51.jpg", desc: "Zachód słońca! 🌅" },
+    { type: "image", src: "image52.jpg", desc: "Miłość w powietrzu! 💘" },
+    { type: "image", src: "image53.jpg", desc: "Piękna chwila razem! 🌠" }
+
+        ];
+
+        let currentIndex = 0;
+        let mediaElement = null;
+        let songPlayer = new Audio();
+
+        function updateMedia() {
+            let mediaContainer = document.getElementById("media");
+            let description = document.getElementById("description");
+            let mediaItem = media[currentIndex];
+
+            // Clear current media
+            mediaContainer.innerHTML = "";
+
+            if (mediaItem.type === "image") {
+                let img = document.createElement("img");
+                img.src = mediaItem.src;
+                img.alt = mediaItem.desc;
+                mediaContainer.appendChild(img);
+            } else if (mediaItem.type === "video") {
+                mediaElement = document.createElement("video");
+                mediaElement.src = mediaItem.src;
+                mediaElement.controls = true;
+                mediaElement.width = 400;
+                mediaContainer.appendChild(mediaElement);
+                mediaElement.play();
+            }
+
+            description.textContent = mediaItem.desc;
+
+            // Ukryj przycisk "Wiadomość", jeśli nie jest to ostatnie zdjęcie
+            if (currentIndex < media.length - 1) {
+                document.getElementById("messageButton").style.display = "none";
+                document.querySelector(".controls").style.display = "flex"; // Pokaż przyciski nawigacyjne
+            } else {
+                document.getElementById("messageButton").style.display = "block";
+                document.querySelector(".controls").style.display = "none"; // Ukryj przyciski nawigacyjne
+            }
+        }
+
+        function nextMedia() {
+            if (currentIndex < media.length - 1) {
+                currentIndex++;
+                updateMedia();
+            } else {
+                // Jeśli to ostatnie zdjęcie, pokaż przycisk "Wiadomość"
+                document.getElementById("messageButton").style.display = "block";
+                document.querySelector(".controls").style.display = "none"; // Ukryj przyciski nawigacyjne
+            }
+        }
+
+        function prevMedia() {
+            if (currentIndex > 0) {
+                currentIndex--;
+                updateMedia();
+            }
+        }
+
+        function toggleMessage() {
+            let message = document.getElementById("message");
+            let button = document.getElementById("messageButton");
+
+            if (message.classList.contains("hidden")) {
+                message.classList.remove("hidden");
+                button.textContent = "✉️ Ukryj wiadomość";
+            } else {
+                message.classList.add("hidden");
+                button.textContent = "💌 Wiadomość";
+            }
+        }
+
+        function playSong(songSrc) {
+            songPlayer.src = songSrc;
+            songPlayer.play();
+        }
+
+        function stopSong() {
+            songPlayer.pause();
+        }
+
+        function resumeSong() {
+            if (songPlayer.paused) {
+                songPlayer.play();
+            }
+        }
+
+        updateMedia();
+    </script>
+</body>
+</html>
